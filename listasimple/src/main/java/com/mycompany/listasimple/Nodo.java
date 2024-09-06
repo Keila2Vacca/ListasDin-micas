@@ -3,45 +3,66 @@ package com.mycompany.listasimple;
 
 
 public class Nodo {
-    private String name;
-    private int age;
-    private float average;
-    
-    
-    private Nodo enlace;
-
+    /**
+     * @return the enlace
+     */
     public Nodo getEnlace() {
         return enlace;
     }
 
+    /**
+     * @param enlace the enlace to set
+     */
     public void setEnlace(Nodo enlace) {
         this.enlace = enlace;
     }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the edad
+     */
+    public int getEdad() {
+        return edad;
+    }
+
+    /**
+     * @param edad the edad to set
+     */
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    /**
+     * @return the promedio
+     */
+    public float getPromedio() {
+        return promedio;
+    }
+
+    /**
+     * @param promedio the promedio to set
+     */
+    public void setPromedio(float promedio) {
+        this.promedio = promedio;
+    }
     
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public float getAverage() {
-        return average;
-    }
-
-    public void setAverage(float average) {
-        this.average = average;
-    }
+    private String nombre;
+    private int edad;
+    private float promedio;
     
+    private Nodo enlace;
     
 }
