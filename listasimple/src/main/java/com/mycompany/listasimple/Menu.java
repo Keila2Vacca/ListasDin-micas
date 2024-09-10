@@ -24,6 +24,8 @@ public class Menu extends javax.swing.JFrame {
         intoLast = new javax.swing.JButton();
         addPosition = new javax.swing.JButton();
         addData = new javax.swing.JButton();
+        indice = new javax.swing.JLabel();
+        indiceInt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +59,15 @@ public class Menu extends javax.swing.JFrame {
         });
 
         addPosition.setText("Agregar por posición");
+        addPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPositionActionPerformed(evt);
+            }
+        });
 
         addData.setText("Agregar por dato");
+
+        indice.setText("Indice");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,19 +78,19 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name)
                     .addComponent(age)
-                    .addComponent(average))
+                    .addComponent(average)
+                    .addComponent(indice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nameString, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                        .addComponent(ageInt)
-                        .addComponent(averageFloat))
-                    .addComponent(tittle))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameString, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(ageInt)
+                    .addComponent(averageFloat)
+                    .addComponent(tittle)
+                    .addComponent(indiceInt))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(addData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(addData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(intoLast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
@@ -118,7 +127,10 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(addPosition)))
                 .addGap(18, 18, 18)
-                .addComponent(addData)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addData)
+                    .addComponent(indice)
+                    .addComponent(indiceInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
@@ -142,6 +154,14 @@ public class Menu extends javax.swing.JFrame {
                 Integer.parseInt(ageInt.getText()),
                 Float.parseFloat(averageFloat.getText()));
     }//GEN-LAST:event_intoLastActionPerformed
+
+    private void addPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPositionActionPerformed
+       objlista.insertarPorPosicion(
+                nameString.getText(),
+                Integer.parseInt(ageInt.getText()),
+                Float.parseFloat(averageFloat.getText()),
+                Integer.parseInt(indiceInt.getText()));                                      
+    }//GEN-LAST:event_addPositionActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -184,6 +204,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel average;
     private javax.swing.JTextField averageFloat;
     private javax.swing.JButton create;
+    private javax.swing.JLabel indice;
+    private javax.swing.JTextField indiceInt;
     private javax.swing.JButton intoLast;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nameString;

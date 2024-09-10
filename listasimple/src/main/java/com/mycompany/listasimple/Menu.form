@@ -29,22 +29,20 @@
                   <Component id="name" min="-2" max="-2" attributes="0"/>
                   <Component id="age" min="-2" max="-2" attributes="0"/>
                   <Component id="average" min="-2" max="-2" attributes="0"/>
+                  <Component id="indice" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="11" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="nameString" pref="109" max="32767" attributes="0"/>
-                      <Component id="ageInt" max="32767" attributes="0"/>
-                      <Component id="averageFloat" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="tittle" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="addData" max="32767" attributes="0"/>
-                      <Component id="addPosition" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="nameString" pref="109" max="32767" attributes="0"/>
+                  <Component id="ageInt" max="32767" attributes="0"/>
+                  <Component id="averageFloat" max="32767" attributes="0"/>
+                  <Component id="tittle" min="-2" max="-2" attributes="0"/>
+                  <Component id="indiceInt" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="addData" max="32767" attributes="0"/>
+                  <Component id="addPosition" max="32767" attributes="0"/>
                   <Component id="intoLast" alignment="0" max="32767" attributes="0"/>
                   <Component id="search" alignment="0" max="32767" attributes="0"/>
                   <Component id="create" alignment="0" pref="145" max="32767" attributes="0"/>
@@ -93,7 +91,11 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="addData" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="addData" min="-2" max="-2" attributes="0"/>
+                  <Component id="indice" min="-2" max="-2" attributes="0"/>
+                  <Component id="indiceInt" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="74" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -154,11 +156,21 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar por posici&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPositionActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="addData">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar por dato"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="indice">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Indice"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="indiceInt">
     </Component>
   </SubComponents>
 </Form>
