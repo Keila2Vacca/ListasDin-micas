@@ -29,20 +29,19 @@
                   <Component id="name" min="-2" max="-2" attributes="0"/>
                   <Component id="age" min="-2" max="-2" attributes="0"/>
                   <Component id="average" min="-2" max="-2" attributes="0"/>
-                  <Component id="indice" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="nameString" pref="109" max="32767" attributes="0"/>
                   <Component id="ageInt" max="32767" attributes="0"/>
                   <Component id="averageFloat" max="32767" attributes="0"/>
                   <Component id="tittle" min="-2" max="-2" attributes="0"/>
-                  <Component id="indiceInt" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="deleteData" pref="145" max="32767" attributes="0"/>
+                  <Component id="orderAlphabetically" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="deleteData" pref="145" max="32767" attributes="0"/>
                       <Component id="deleteIndice" max="32767" attributes="0"/>
                       <Component id="addData" max="32767" attributes="0"/>
                       <Component id="addPosition" max="32767" attributes="0"/>
@@ -95,16 +94,14 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="indice" min="-2" max="-2" attributes="0"/>
-                  <Component id="indiceInt" min="-2" max="-2" attributes="0"/>
-                  <Component id="addData" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="addData" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="deleteIndice" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="deleteData" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="orderAlphabetically" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -170,18 +167,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="addData">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar por dato"/>
+        <Property name="text" type="java.lang.String" value="Agregar por Dato"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addDataActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="indice">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Indice"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="indiceInt">
     </Component>
     <Component class="javax.swing.JButton" name="deleteIndice">
       <Properties>
@@ -197,6 +187,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteDataActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="orderAlphabetically">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ordenar alfab&#xe9;ticamente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderAlphabeticallyActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

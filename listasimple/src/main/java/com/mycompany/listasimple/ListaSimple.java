@@ -3,18 +3,16 @@ package com.mycompany.listasimple;
 import javax.swing.JOptionPane;
 
 public class Listasimple {
-    
-    //ordenar la lista alfabéticamente, buscar por todo tipo y validar
+
+    //ordenar la lista alfabéticamente
     //miercoles 18 de 3 a 4
-    
-    
     Nodo inicio;
 
     Listasimple() {
         inicio = null;
     }
     //el nodo que se añade siempre queda de primero
-    
+
     public void insertarInicio(String nombre, int edad, float promedio) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -31,7 +29,6 @@ public class Listasimple {
     }
 
     //el nodo que se añade siempre queda al final
-    
     public void insertarFinal(String nombre, int edad, float promedio) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -115,7 +112,7 @@ public class Listasimple {
                 return;
             } else {
                 while (anterior != null) {
-                    if (posicion+1 == indice) {
+                    if (posicion + 1 == indice) {
                         siguiente = anterior.getEnlace().getEnlace();
                         indiceEncontrado = true;
                         break;
@@ -131,9 +128,9 @@ public class Listasimple {
             }
         }
     }
-    //el nodo que se añade queda después de un dato dado
-     
-    public void insertarPorDato(String nombre, int edad, float promedio) {
+    //el nodo que se añade queda después de un nombre, edad y promedio dado
+
+    public void insertarPorNombre(String nombre, int edad, float promedio, String referencia) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
         nuevo.setEdad(edad);
@@ -145,68 +142,251 @@ public class Listasimple {
             inicio = nuevo;
         } else {
 
-            boolean indiceEncontrado = false;
+            boolean nombreEncontrado = false;
             Nodo anterior = inicio;
             Nodo siguiente = null;
-
-          
-                while (anterior != null) {
-                    if (posicion == indice) {
-                        siguiente = anterior.getEnlace();
-                        break;
-                    }
-                    anterior = anterior.getEnlace();
-                    posicion++;
+            while (anterior != null) {
+                if (anterior.getNombre().equals(referencia)) {
+                    siguiente = anterior.getEnlace();
+                    nombreEncontrado = true;
+                    break;
                 }
-                if (indiceEncontrado) {
-                    anterior.setEnlace(nuevo);
-                    nuevo.setEnlace(siguiente);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el indice");
-                }
-        }
-    }
-     
-     //el nodo que se añade elimina al quetiene el dato dado
-     
-    public void eliminarPorDato(String nombre, int edad, float promedio, int indice) {
-        Nodo nuevo = new Nodo();
-        nuevo.setNombre(nombre);
-        nuevo.setEdad(edad);
-        nuevo.setPromedio(promedio);
-        nuevo.setEnlace(null);
+                anterior = anterior.getEnlace();
+            }
 
-        if (inicio == null) {
-            JOptionPane.showMessageDialog(null, "La lista esta vacia");
-            inicio = nuevo;
-        } else {
-
-            boolean indiceEncontrado = false;
-            int posicion = 1;
-            Nodo anterior = inicio;
-            Nodo siguiente = null;
-
-            if (indice <= 0) {
-                JOptionPane.showMessageDialog(null, "El indice debe ser mayor a cero");
+            if (nombreEncontrado) {
+                anterior.setEnlace(nuevo);
+                nuevo.setEnlace(siguiente);
             } else {
-                while (anterior != null) {
-                    if (posicion == indice) {
-                        siguiente = anterior.getEnlace();
-                        break;
-                    }
-                    anterior = anterior.getEnlace();
-                    posicion++;
-                }
-                if (indiceEncontrado) {
-                    anterior.setEnlace(nuevo);
-                    nuevo.setEnlace(siguiente);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró el indice");
-                }
+                JOptionPane.showMessageDialog(null, "No se encontró el nombre ingresado.");
             }
         }
     }
-     
+
+    public void insertarPorPromedio(String nombre, int edad, float promedio, float referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(promedio);
+        nuevo.setEnlace(null);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            inicio = nuevo;
+        } else {
+
+            boolean promedioEncontrado = false;
+            Nodo anterior = inicio;
+            Nodo siguiente = null;
+            while (anterior != null) {
+                if (anterior.getPromedio() == referencia) {
+                    siguiente = anterior.getEnlace();
+                    promedioEncontrado = true;
+                    break;
+                }
+                anterior = anterior.getEnlace();
+            }
+
+            if (promedioEncontrado) {
+                anterior.setEnlace(nuevo);
+                nuevo.setEnlace(siguiente);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el promedio ingresado.");
+            }
+        }
+    }
+
+    public void insertarPorEdad(String nombre, int edad, float promedio, int referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(promedio);
+        nuevo.setEnlace(null);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            inicio = nuevo;
+        } else {
+
+            boolean edadEncontrada = false;
+            Nodo anterior = inicio;
+            Nodo siguiente = null;
+            while (anterior != null) {
+                if (anterior.getEdad() == referencia) {
+                    siguiente = anterior.getEnlace();
+                    edadEncontrada = true;
+                    break;
+                }
+                anterior = anterior.getEnlace();
+            }
+
+            if (edadEncontrada) {
+                anterior.setEnlace(nuevo);
+                nuevo.setEnlace(siguiente);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró la edad ingresada.");
+            }
+
+        }
+    }
+
+    //el nodo que se añade elimina al quetiene el nombre, edad y promedio  dado
+    
+    public void eliminarPorNombre(String nombre, int edad, float promedio, String referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(promedio);
+        nuevo.setEnlace(null);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            inicio = nuevo;
+        } else {
+
+            Nodo anterior = null;
+            Nodo actual = inicio;
+
+            if (actual.getNombre().equals(nombre)) {
+                inicio = actual.getEnlace();
+                JOptionPane.showMessageDialog(null, "Nodo con nombre " + nombre + " eliminado.");
+                return;
+            }
+
+            while (actual != null) {
+                if (actual.getNombre().equals(nombre)) {
+                    if (anterior != null) {
+                        anterior.setEnlace(actual.getEnlace());
+                    }
+                    JOptionPane.showMessageDialog(null, "Nodo con nombre " + nombre + " eliminado.");
+                    return;
+                }
+                anterior = actual;
+                actual = actual.getEnlace();
+            }
+
+            JOptionPane.showMessageDialog(null, "No se encontró un nodo con el nombre especificado.");
+
+        }
+    }
+
+    public void eliminarPorEdad(String nombre, int edad, float promedio, int referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(promedio);
+        nuevo.setEnlace(null);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            inicio = nuevo;
+        } else {
+
+            Nodo anterior = null;
+            Nodo actual = inicio;
+
+            if (actual.getEdad() == edad) {
+                inicio = actual.getEnlace();
+                JOptionPane.showMessageDialog(null, "Nodo con edad " + edad + " eliminado.");
+                return;
+            }
+
+            while (actual != null) {
+                if (actual.getEdad() == edad) {
+                    if (anterior != null) {
+                        anterior.setEnlace(actual.getEnlace());
+                    }
+                    JOptionPane.showMessageDialog(null, "Nodo con edad " + edad + " eliminado.");
+                    return;
+                }
+                anterior = actual;
+                actual = actual.getEnlace();
+            }
+
+            JOptionPane.showMessageDialog(null, "No se encontró un nodo con la edad especificada.");
+        }
+
+    }
+
+    public void eliminarPorPromedio(String nombre, int edad, float promedio, float referencia) {
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(promedio);
+        nuevo.setEnlace(null);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            inicio = nuevo;
+        } else {
+
+            Nodo anterior = null;
+            Nodo actual = inicio;
+
+            if (actual.getPromedio() == promedio) {
+                inicio = actual.getEnlace();
+                JOptionPane.showMessageDialog(null, "Nodo con promedio " + promedio + " eliminado.");
+                return;
+            }
+
+            while (actual != null) {
+                if (actual.getPromedio() == promedio) {
+                    if (anterior != null) {
+                        anterior.setEnlace(actual.getEnlace());
+                    }
+                    JOptionPane.showMessageDialog(null, "Nodo con promedio " + promedio + " eliminado.");
+                    return;
+                }
+                anterior = actual;
+                actual = actual.getEnlace();
+            }
+
+            JOptionPane.showMessageDialog(null, "No se encontró un nodo con el promedio especificado.");
+
+        }
+    }
+
+    //ordena la lista alfabéticamente
+    
+    public void ordenarPorNombre() {
+        
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+            return;
+        }
+        boolean huboIntercambio;
+
+        do {
+            Nodo actual = inicio;
+            Nodo siguiente = inicio.getEnlace();
+            Nodo anterior = null;
+            huboIntercambio = false;
+
+            while (siguiente != null) {
+                if (actual.getNombre().compareToIgnoreCase(siguiente.getNombre()) > 0) {
+                    huboIntercambio = true;
+
+                    if (anterior == null) {
+                        inicio = siguiente;
+                    } else {
+                        anterior.setEnlace(siguiente);
+                    }
+                    actual.setEnlace(siguiente.getEnlace());
+                    siguiente.setEnlace(actual);
+                    
+                    anterior = siguiente;
+                    siguiente = actual.getEnlace();
+                } else {
+                    anterior = actual;
+                    actual = siguiente;
+                    siguiente = siguiente.getEnlace();
+                }
+            }
+        } while (huboIntercambio);
+
+        JOptionPane.showMessageDialog(null, "La lista ha sido ordenada alfabéticamente por nombre.");
+    }
+
     public void consultar() {
         Nodo temporal = inicio;
         if (inicio == null) {

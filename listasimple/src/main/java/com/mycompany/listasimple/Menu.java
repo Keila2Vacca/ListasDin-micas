@@ -1,5 +1,7 @@
 package com.mycompany.listasimple;
 
+import javax.swing.JOptionPane;
+
 public class Menu extends javax.swing.JFrame {
 
     Listasimple objlista = new Listasimple();
@@ -24,10 +26,9 @@ public class Menu extends javax.swing.JFrame {
         intoLast = new javax.swing.JButton();
         addPosition = new javax.swing.JButton();
         addData = new javax.swing.JButton();
-        indice = new javax.swing.JLabel();
-        indiceInt = new javax.swing.JTextField();
         deleteIndice = new javax.swing.JButton();
         deleteData = new javax.swing.JButton();
+        orderAlphabetically = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,14 +68,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        addData.setText("Agregar por dato");
+        addData.setText("Agregar por Dato");
         addData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDataActionPerformed(evt);
             }
         });
-
-        indice.setText("Indice");
 
         deleteIndice.setText("Eliminar por posición");
         deleteIndice.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +89,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        orderAlphabetically.setText("Ordenar alfabéticamente");
+        orderAlphabetically.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderAlphabeticallyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,19 +105,18 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name)
                     .addComponent(age)
-                    .addComponent(average)
-                    .addComponent(indice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(average))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nameString, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                     .addComponent(ageInt)
                     .addComponent(averageFloat)
-                    .addComponent(tittle)
-                    .addComponent(indiceInt))
+                    .addComponent(tittle))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deleteData, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(orderAlphabetically, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(deleteData, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                         .addComponent(deleteIndice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,22 +156,21 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(addPosition)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(indice)
-                    .addComponent(indiceInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addData))
+                .addComponent(addData)
                 .addGap(19, 19, 19)
                 .addComponent(deleteIndice)
                 .addGap(18, 18, 18)
                 .addComponent(deleteData)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(orderAlphabetically)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
-         objlista.insertarInicio(
+        objlista.insertarInicio(
                 nameString.getText(),
                 Integer.parseInt(ageInt.getText()),
                 Float.parseFloat(averageFloat.getText()));
@@ -184,11 +188,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_intoLastActionPerformed
 
     private void addPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPositionActionPerformed
-       objlista.insertarPorPosicion(
+        objlista.insertarPorPosicion(
                 nameString.getText(),
                 Integer.parseInt(ageInt.getText()),
                 Float.parseFloat(averageFloat.getText()),
-                Integer.parseInt(indiceInt.getText()));                                      
+                validateIntInput(JOptionPane.showInputDialog("Ingrese el indice:")));
     }//GEN-LAST:event_addPositionActionPerformed
 
     private void deleteIndiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIndiceActionPerformed
@@ -196,22 +200,102 @@ public class Menu extends javax.swing.JFrame {
                 nameString.getText(),
                 Integer.parseInt(ageInt.getText()),
                 Float.parseFloat(averageFloat.getText()),
-                Integer.parseInt(indiceInt.getText()));
+                validateIntInput(JOptionPane.showInputDialog("Ingrese el indice:")));
     }//GEN-LAST:event_deleteIndiceActionPerformed
 
     private void deleteDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataActionPerformed
-        objlista.eliminarPorDato(
-                nameString.getText(),
-                Integer.parseInt(ageInt.getText()),
-                Float.parseFloat(averageFloat.getText()));
+
+        String[] opciones = {"Nombre", "Edad", "Promedio"};
+        String seleccion = (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione por qué tipo de dato desea eliminar el nodo: ",
+                "Opciones de eliminación: ",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
+
+        if (seleccion != null) {
+            switch (seleccion) {
+                case "Nombre":
+                    objlista.eliminarPorNombre(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            JOptionPane.showInputDialog("Ingrese el nombre:"));
+
+                case "Edad":
+                    objlista.eliminarPorEdad(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            validateIntInput(JOptionPane.showInputDialog("Ingrese la edad:")));
+
+                case "Promedio":
+                    objlista.eliminarPorPromedio(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            validateFloatInput(JOptionPane.showInputDialog("Ingrese el promedio:")));
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida");
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ninguna opción");
+        }
     }//GEN-LAST:event_deleteDataActionPerformed
 
     private void addDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataActionPerformed
-         objlista.insertarPorDato(
-                nameString.getText(),
-                Integer.parseInt(ageInt.getText()),
-                Float.parseFloat(averageFloat.getText()));
+  
+        String[] opciones = {"Nombre", "Edad", "Promedio"};
+        String seleccion = (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione por qué tipo de dato desea insertar el nodo: ",
+                "Opciones para inserción: ",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
+
+        if (seleccion != null) {
+            switch (seleccion) {
+                case "Nombre":
+                    objlista.insertarPorNombre(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            JOptionPane.showInputDialog("Ingrese el nombre:"));
+
+                case "Edad":
+                    objlista.insertarPorEdad(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            validateIntInput(JOptionPane.showInputDialog("Ingrese la edad:")));
+
+                case "Promedio":
+                    objlista.insertarPorPromedio(
+                            nameString.getText(),
+                            Integer.parseInt(ageInt.getText()),
+                            Float.parseFloat(averageFloat.getText()),
+                            validateFloatInput(JOptionPane.showInputDialog("Ingrese el promedio:")));
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida");
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ninguna opción");
+        }
     }//GEN-LAST:event_addDataActionPerformed
+
+    private void orderAlphabeticallyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderAlphabeticallyActionPerformed
+        objlista.ordenarPorNombre();
+    }//GEN-LAST:event_orderAlphabeticallyActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -224,16 +308,24 @@ public class Menu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -246,6 +338,32 @@ public class Menu extends javax.swing.JFrame {
         });
     }
 
+    public int validateIntInput(String str) {
+        while (isNumber(str) == false) {
+            str = JOptionPane.showInputDialog("Ingrese un número válido mayor a cero:");
+        }
+        return Integer.parseInt(str);
+    }
+
+    public float validateFloatInput(String str) {
+        while (isNumber(str) == false) {
+            str = JOptionPane.showInputDialog("Ingrese un número válido (decimal) mayor a cero:");
+        }
+        return Float.parseFloat(str);
+    }
+
+    public static boolean isNumber(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addData;
     private javax.swing.JButton addPosition;
@@ -256,11 +374,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton create;
     private javax.swing.JButton deleteData;
     private javax.swing.JButton deleteIndice;
-    private javax.swing.JLabel indice;
-    private javax.swing.JTextField indiceInt;
     private javax.swing.JButton intoLast;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nameString;
+    private javax.swing.JButton orderAlphabetically;
     private javax.swing.JButton search;
     private javax.swing.JLabel tittle;
     // End of variables declaration//GEN-END:variables
