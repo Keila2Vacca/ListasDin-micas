@@ -7,6 +7,7 @@ public class Listasimple {
    /*
     botón de busqueda por datos
     crear un codigo que genere n nombres de forma aleatoria
+    código uni virtual "proyecto para optimizar lista simple"
     */
     
     Nodo inicio;
