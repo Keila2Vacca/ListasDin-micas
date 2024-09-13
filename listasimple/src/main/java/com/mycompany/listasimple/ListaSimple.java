@@ -11,6 +11,7 @@ public class Listasimple {
     Listasimple() {
         inicio = null;
     }
+    
     //el nodo que se añade siempre queda de primero
 
     public void insertarInicio(String nombre, int edad, float promedio) {
@@ -29,6 +30,7 @@ public class Listasimple {
     }
 
     //el nodo que se añade siempre queda al final
+    
     public void insertarFinal(String nombre, int edad, float promedio) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -58,36 +60,37 @@ public class Listasimple {
         nuevo.setEnlace(null);
 
         if (inicio == null) {
-            JOptionPane.showMessageDialog(null, "La lista esta vacia");
-            inicio = nuevo;
+            if (indice == 1) {
+                inicio = nuevo;
+            } else {
+                JOptionPane.showMessageDialog(null, "La lista esta vacia");
+            }
         } else {
-
-            boolean indiceEncontrado = false;
             int posicion = 1;
             Nodo anterior = inicio;
             Nodo siguiente = null;
 
-            if (indice <= 0) {
-                JOptionPane.showMessageDialog(null, "El indice debe ser mayor a cero");
+            if (indice == 1) {
+                nuevo.setEnlace(inicio);
+                inicio = nuevo;
             } else {
                 while (anterior != null) {
-                    if (posicion == indice) {
+                    if (posicion == indice - 1 ) {
                         siguiente = anterior.getEnlace();
+                        anterior.setEnlace(nuevo);
+                        nuevo.setEnlace(siguiente);
                         break;
                     }
                     anterior = anterior.getEnlace();
                     posicion++;
                 }
-                if (indiceEncontrado) {
-                    anterior.setEnlace(nuevo);
-                    nuevo.setEnlace(siguiente);
-                } else {
+                if (posicion < indice) {
                     JOptionPane.showMessageDialog(null, "No se encontró el indice");
                 }
             }
         }
-    }
-
+    } 
+    
     //el nodo que se añade elimina al que quedaba en la posición dada
     
     public void eliminarPorPosicion(String nombre, int edad, float promedio, int indice) {
@@ -128,6 +131,7 @@ public class Listasimple {
             }
         }
     }
+    
     //el nodo que se añade queda después de un nombre, edad y promedio dado
 
     public void insertarPorNombre(String nombre, int edad, float promedio, String referencia) {
@@ -349,7 +353,7 @@ public class Listasimple {
     //ordena la lista alfabéticamente
     
     public void ordenarPorNombre() {
-        
+
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "La lista está vacía");
             return;
@@ -373,7 +377,7 @@ public class Listasimple {
                     }
                     actual.setEnlace(siguiente.getEnlace());
                     siguiente.setEnlace(actual);
-                    
+
                     anterior = siguiente;
                     siguiente = actual.getEnlace();
                 } else {
@@ -387,6 +391,8 @@ public class Listasimple {
         JOptionPane.showMessageDialog(null, "La lista ha sido ordenada alfabéticamente por nombre.");
     }
 
+    //consulta la lista
+    
     public void consultar() {
         Nodo temporal = inicio;
         if (inicio == null) {
