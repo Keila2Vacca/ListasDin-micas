@@ -4,8 +4,11 @@ import javax.swing.JOptionPane;
 
 public class Listasimple {
 
-    //ordenar la lista alfabéticamente
-    //miercoles 18 de 3 a 4
+   /*
+    botón de busqueda por datos
+    crear un codigo que genere n nombres de forma aleatoria
+    */
+    
     Nodo inicio;
 
     Listasimple() {
@@ -406,9 +409,6 @@ public class Listasimple {
                 temporal = temporal.getEnlace();
 
             } while (temporal != null);
-
         }
-
     }
-
 }
