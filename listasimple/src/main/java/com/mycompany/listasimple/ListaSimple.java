@@ -1,23 +1,22 @@
 package com.mycompany.listasimple;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class Listasimple {
 
-   /*
+    /*
     botón de busqueda por datos
     crear un codigo que genere n nombres de forma aleatoria
     código uni virtual "proyecto para optimizar lista simple"
-    */
-    
+     */
     Nodo inicio;
 
     Listasimple() {
         inicio = null;
     }
-    
-    //el nodo que se añade siempre queda de primero
 
+    //el nodo que se añade siempre queda de primero
     public void insertarInicio(String nombre, int edad, float promedio) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -34,7 +33,6 @@ public class Listasimple {
     }
 
     //el nodo que se añade siempre queda al final
-    
     public void insertarFinal(String nombre, int edad, float promedio) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -55,7 +53,6 @@ public class Listasimple {
     }
 
     //el nodo que se añade queda en la posición dada
-    
     public void insertarPorPosicion(String nombre, int edad, float promedio, int indice) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -79,7 +76,7 @@ public class Listasimple {
                 inicio = nuevo;
             } else {
                 while (anterior != null) {
-                    if (posicion == indice - 1 ) {
+                    if (posicion == indice - 1) {
                         siguiente = anterior.getEnlace();
                         anterior.setEnlace(nuevo);
                         nuevo.setEnlace(siguiente);
@@ -93,10 +90,9 @@ public class Listasimple {
                 }
             }
         }
-    } 
-    
+    }
+
     //el nodo que se añade elimina al que quedaba en la posición dada
-    
     public void eliminarPorPosicion(String nombre, int edad, float promedio, int indice) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -135,9 +131,8 @@ public class Listasimple {
             }
         }
     }
-    
-    //el nodo que se añade queda después de un nombre, edad y promedio dado
 
+    //el nodo que se añade queda después de un nombre, edad y promedio dado
     public void insertarPorNombre(String nombre, int edad, float promedio, String referencia) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -239,7 +234,6 @@ public class Listasimple {
     }
 
     //el nodo que se añade elimina al quetiene el nombre, edad y promedio  dado
-    
     public void eliminarPorNombre(String nombre, int edad, float promedio, String referencia) {
         Nodo nuevo = new Nodo();
         nuevo.setNombre(nombre);
@@ -356,6 +350,8 @@ public class Listasimple {
 
     //ordena la lista alfabéticamente
     
+    /*
+    
     public void ordenarPorNombre() {
 
         if (inicio == null) {
@@ -395,6 +391,10 @@ public class Listasimple {
         JOptionPane.showMessageDialog(null, "La lista ha sido ordenada alfabéticamente por nombre.");
     }
 
+    */
+  
+    
+
     //consulta la lista
     
     public void consultar() {
@@ -404,9 +404,9 @@ public class Listasimple {
         } else {
             do {
                 JOptionPane.showMessageDialog(null,
-                        "Nombre: " + temporal.getNombre() + " La edad es: "
-                        + temporal.getEdad() + " El promedio es: " + temporal.getPromedio());
-
+                        "Nombre: " + temporal.getNombre() +
+                        " La edad es: " + temporal.getEdad() +
+                        " El promedio es: " + temporal.getPromedio());
                 temporal = temporal.getEnlace();
 
             } while (temporal != null);
