@@ -7,6 +7,8 @@ public class Menu extends javax.swing.JFrame {
     ListaCircular objLista = new ListaCircular();
 
     int numeroBoletas;
+    int boletasVendidas = 0;
+    int boletasDis;
 
     public Menu() {
         initComponents();
@@ -109,7 +111,7 @@ public class Menu extends javax.swing.JFrame {
         objLista.solicitarTurno(
                 JOptionPane.showInputDialog("Nombre: "),
                 JOptionPane.showInputDialog("Documento: "),
-                JOptionPane.showInputDialog("Género: "));
+                JOptionPane.showInputDialog("Género: ") );
     }//GEN-LAST:event_requestActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -122,6 +124,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void attendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendActionPerformed
         int numBoletas = validateIntInput(JOptionPane.showInputDialog("Diga el numero de boletas a comprar: "));
+        if (numBoletas <= 3) {
+            if (boletasDis > 0) {
+                boletasDis--;
+                boletasVendidas++;
+                JOptionPane.showMessageDialog(rootPane, "Se vendieron las boletas solicitadas");
+            }else{
+              JOptionPane.showMessageDialog(rootPane, "Lo sentimos, solo hay " + boletasDis + " boletas disponibles.");   
+            }
+        }else{
+           JOptionPane.showMessageDialog(rootPane, "Lo sentimos, el número máximo de boletas que puedes compara es: 3");
+        }
     }//GEN-LAST:event_attendActionPerformed
 
     public static void main(String args[]) {

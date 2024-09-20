@@ -9,7 +9,7 @@ public class ListaCircular {
     ListaCircular() {
         inicio = null;
     }
-
+    
     public void solicitarTurno(String name, String Document, String gender) {
         NodosCirculares nuevo = new NodosCirculares();
 
@@ -17,21 +17,17 @@ public class ListaCircular {
         nuevo.setGender(gender);
         nuevo.setName(name);
         nuevo.setSgt(nuevo);
+        NodosCirculares temporal = inicio;
 
         if (inicio == null) {
-            JOptionPane.showMessageDialog(null, "La lista está vacia");
-            nuevo.setSgt(nuevo);
+            JOptionPane.showMessageDialog(null, "!La lista está vacia¡, Hola esres el primero en llegar");
             inicio = nuevo;
         } else {
-           NodosCirculares nodoFinal;
-           NodosCirculares temporal = inicio;
-           
            while(temporal.getSgt() != inicio){
                temporal = temporal.getSgt();
            }
-           nodoFinal = temporal;
+           temporal.setSgt(nuevo);
            nuevo.setSgt(inicio);
-           nodoFinal.setSgt(nuevo);
         }
     }
 
@@ -52,6 +48,7 @@ public class ListaCircular {
     }
     
     public void atender(int numBoletas){
-        
+      
+ 
     }
 }
