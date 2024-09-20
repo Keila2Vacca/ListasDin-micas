@@ -2,11 +2,11 @@ package com.mycompany.listacircular;
 
 import javax.swing.JOptionPane;
 
-public class Listacircular {
+public class ListaCircular {
 
     NodosCirculares inicio;
 
-    Listacircular() {
+    ListaCircular() {
         inicio = null;
     }
 
@@ -20,11 +20,18 @@ public class Listacircular {
 
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "La lista está vacia");
+            nuevo.setSgt(nuevo);
             inicio = nuevo;
         } else {
-            nuevo.setSgt(inicio);
-            inicio.setSgt(nuevo);
-            inicio = nuevo;
+           NodosCirculares nodoFinal;
+           NodosCirculares temporal = inicio;
+           
+           while(temporal.getSgt() != inicio){
+               temporal = temporal.getSgt();
+           }
+           nodoFinal = temporal;
+           nuevo.setSgt(inicio);
+           nodoFinal.setSgt(nuevo);
         }
     }
 
@@ -38,8 +45,13 @@ public class Listacircular {
                JOptionPane.showMessageDialog(null, 
                        "Documento: " + temporal.getDocument() +
                        "Nombre: " + temporal.getName() + 
-                       "Género: " + temporal.getGender());  
-            } while(temporal != null);
+                       "Género: " + temporal.getGender()); 
+                temporal=temporal.getSgt();
+            } while(temporal != inicio);
         }
+    }
+    
+    public void atender(int numBoletas){
+        
     }
 }

@@ -88,21 +88,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="atender"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attendActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="request">
       <Properties>
         <Property name="text" type="java.lang.String" value="solicitar turno"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="requestActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="search">
       <Properties>
         <Property name="text" type="java.lang.String" value="cunsultar lista"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sold">
       <Properties>
         <Property name="text" type="java.lang.String" value="boletas vendidas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="searchDocument">
       <Properties>
