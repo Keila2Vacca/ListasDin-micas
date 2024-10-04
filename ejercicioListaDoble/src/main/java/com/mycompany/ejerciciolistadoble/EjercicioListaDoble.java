@@ -35,41 +35,35 @@ public class EjercicioListaDoble {
     public void buscarPocisionAnteriorySiguiente() {
         String input = JOptionPane.showInputDialog("Diga la posición: ");
 
-        if (input != null) {
-            try {
-                int posicionBuscada = validateIntInput(input);
-                Nodo temporal = inicio;
-                int posicionActual = 0;
+        int posicionBuscada = validateIntInput(input);
+        Nodo temporal = inicio;
+        int posicionActual = 0;
 
-                while (temporal != null && (posicionActual + 1) < posicionBuscada) {
-                    temporal = temporal.getSgt();
-                    posicionActual++;
-                }
+        while (temporal != null && (posicionActual + 1) < posicionBuscada) {
+            temporal = temporal.getSgt();
+            posicionActual++;
+        }
 
-                if (temporal != null) {
-                    if (temporal.getAnterior() != null) {
-                        Nodo anterior = temporal.getAnterior();
-                        JOptionPane.showMessageDialog(null, "Antes de la posición " + posicionBuscada  + ":\n"
-                                + "Nombre: " + anterior.getName() + "\n"
-                                + "Edad: " + anterior.getAge());
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay ningún nodo antes de la posición " + posicionBuscada);
-                    }
-
-                    if (temporal.getSgt() != null) {
-                        Nodo siguiente = temporal.getSgt();
-                        JOptionPane.showMessageDialog(null, "Después de la posición " + posicionBuscada + ":\n"
-                                + "Nombre: " + siguiente.getName() + "\n"
-                                + "Edad: " + siguiente.getAge());
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay ningún nodo después de la posición " + posicionBuscada);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor ingresa un número válido.");
+        if (temporal != null) {
+            if (temporal.getAnterior() != null) {
+                Nodo anterior = temporal.getAnterior();
+                JOptionPane.showMessageDialog(null, "Antes de la posición " + posicionBuscada + ":\n"
+                        + "Nombre: " + anterior.getName() + "\n"
+                        + "Edad: " + anterior.getAge());
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo antes de la posición " + posicionBuscada);
             }
+
+            if (temporal.getSgt() != null) {
+                Nodo siguiente = temporal.getSgt();
+                JOptionPane.showMessageDialog(null, "Después de la posición " + posicionBuscada + ":\n"
+                        + "Nombre: " + siguiente.getName() + "\n"
+                        + "Edad: " + siguiente.getAge());
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo después de la posición " + posicionBuscada);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
         }
 
     }
