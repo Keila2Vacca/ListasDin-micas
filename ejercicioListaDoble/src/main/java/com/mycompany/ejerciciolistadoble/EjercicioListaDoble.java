@@ -3,6 +3,10 @@ package com.mycompany.ejerciciolistadoble;
 import javax.swing.JOptionPane;
 
 public class EjercicioListaDoble {
+    
+    //ELIMINAR POR DATO Y POSICIÓN
+    //ACTUALIZAR UN DATO
+    //INSERTAR ANTES Y DESPUES DE UNA POSICIÓN
 
     Nodo inicio;
 
