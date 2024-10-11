@@ -22,6 +22,7 @@ public class Menu extends javax.swing.JFrame {
         SearchAdultAndPosition = new javax.swing.JButton();
         DeleteUnderAge = new javax.swing.JButton();
         SearchList = new javax.swing.JButton();
+        addFirst = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +63,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        addFirst.setText("Agregar de primero");
+        addFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addFirstActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +92,10 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(SearchAdultAndPosition)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(SearchList)))
+                        .addComponent(SearchList))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(addFirst)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,7 +113,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(DeleteUnderAge)
                 .addGap(18, 18, 18)
                 .addComponent(SearchList)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addFirst)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,6 +142,11 @@ public class Menu extends javax.swing.JFrame {
     private void DeleteUnderAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteUnderAgeActionPerformed
         objLista.eliminarMenores();
     }//GEN-LAST:event_DeleteUnderAgeActionPerformed
+
+    private void addFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFirstActionPerformed
+        objLista.insertarInicio(JOptionPane.showInputDialog("Diga el mombre: "),
+                validateIntInput(JOptionPane.showInputDialog("Diga la edad: ")));
+    }//GEN-LAST:event_addFirstActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -188,6 +206,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton SearchAdultAndPosition;
     private javax.swing.JButton SearchList;
     private javax.swing.JButton SearchPosition;
+    private javax.swing.JButton addFirst;
     private javax.swing.JLabel tittle;
     // End of variables declaration//GEN-END:variables
 }
