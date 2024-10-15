@@ -8,8 +8,6 @@ public class EjercicioListaDoble {
     //ACTUALIZAR UN DATO
     //INSERTAR ANTES Y DESPUES DE UNA POSICIÓN
     
-    //código con los mismos métodos pero con lista dobles circular
-
     Nodo inicio;
 
     EjercicioListaDoble() {
@@ -19,14 +17,12 @@ public class EjercicioListaDoble {
        public void insertarInicio(String name, int age) {
         Nodo nuevo = new Nodo();
 
-        nuevo.setAnterior(null);//cambiar a nuevo el null
-        nuevo.setSgt(null);// lo mismo
+        nuevo.setAnterior(null);
+        nuevo.setSgt(null);
         nuevo.setAge(age);
         nuevo.setName(name);
         if (inicio != null) {
             nuevo.setSgt(inicio);
-           // nuevo.setAnterior(inicio.getAnterior());
-          // nuevo.getAnterior().setSgt(nuevo);
             inicio.setAnterior(nuevo);
         }
         inicio = nuevo;
@@ -147,13 +143,7 @@ public class EjercicioListaDoble {
 
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
-        } else {
-            /*
-            do{
-               JOptionPane.showMessageDialog(null, "Nombre: " + temporal.getName() + "\n Edad: " + temporal.getAge());
-               temporal = temporal.getSgt();
-            }while (temporal != inicio)
-            */        
+        } else {       
             while (temporal != null) {
                 JOptionPane.showMessageDialog(null, "Nombre: " + temporal.getName() + "\n Edad: " + temporal.getAge());
                 temporal = temporal.getSgt();
