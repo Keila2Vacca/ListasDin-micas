@@ -16,13 +16,23 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         tittle = new javax.swing.JLabel();
         addLast = new javax.swing.JButton();
         search = new javax.swing.JButton();
         addFirst = new javax.swing.JButton();
-        searchpocition = new javax.swing.JButton();
+        searchposition = new javax.swing.JButton();
         searchAdult = new javax.swing.JButton();
-        RemoveNoAdult = new javax.swing.JButton();
+        removeUnderAge = new javax.swing.JButton();
+        removePosition = new javax.swing.JButton();
+        removeName = new javax.swing.JButton();
+        removeAge = new javax.swing.JButton();
+        actualizeName = new javax.swing.JButton();
+        actualizeAge = new javax.swing.JButton();
+        addBeforePositon = new javax.swing.JButton();
+        addAfterPosition = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,10 +59,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        searchpocition.setText("Buscar posición anterior y siguiente");
-        searchpocition.addActionListener(new java.awt.event.ActionListener() {
+        searchposition.setText("Buscar posición anterior y siguiente");
+        searchposition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchpocitionActionPerformed(evt);
+                searchpositionActionPerformed(evt);
             }
         });
 
@@ -63,10 +73,59 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        RemoveNoAdult.setText("Eliminar menores");
-        RemoveNoAdult.addActionListener(new java.awt.event.ActionListener() {
+        removeUnderAge.setText("Eliminar menores");
+        removeUnderAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RemoveNoAdultActionPerformed(evt);
+                removeUnderAgeActionPerformed(evt);
+            }
+        });
+
+        removePosition.setText("Eliminar por posición");
+        removePosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePositionActionPerformed(evt);
+            }
+        });
+
+        removeName.setText("Eliminar por nombre");
+        removeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeNameActionPerformed(evt);
+            }
+        });
+
+        removeAge.setText("Eliminar por edad");
+        removeAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeAgeActionPerformed(evt);
+            }
+        });
+
+        actualizeName.setText("Actualizar nombre");
+        actualizeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizeNameActionPerformed(evt);
+            }
+        });
+
+        actualizeAge.setText("Actualizar edad");
+        actualizeAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizeAgeActionPerformed(evt);
+            }
+        });
+
+        addBeforePositon.setText("Agregar antes de una posición");
+        addBeforePositon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBeforePositonActionPerformed(evt);
+            }
+        });
+
+        addAfterPosition.setText("Agregar después de una posición");
+        addAfterPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAfterPositionActionPerformed(evt);
             }
         });
 
@@ -74,27 +133,47 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addLast)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(addFirst))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(tittle))
+                    .addComponent(searchposition)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(addFirst))
+                        .addGap(33, 33, 33)
+                        .addComponent(searchAdult))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchpocition)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(search)
-                    .addComponent(addLast))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addGap(16, 16, 16)
+                        .addComponent(removeUnderAge))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(addAfterPosition))
+                            .addComponent(addBeforePositon))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchAdult, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(RemoveNoAdult, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(removeName)
+                            .addComponent(removePosition)
+                            .addComponent(removeAge)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(actualizeAge))
+                                    .addComponent(actualizeName))))
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(search)
+                        .addGap(65, 65, 65))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,16 +183,36 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addLast)
-                    .addComponent(searchAdult))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search)
-                    .addComponent(RemoveNoAdult))
-                .addGap(25, 25, 25)
-                .addComponent(addFirst)
-                .addGap(16, 16, 16)
-                .addComponent(searchpocition)
-                .addContainerGap(102, Short.MAX_VALUE))
+                    .addComponent(removePosition))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addFirst))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(removeName)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchposition)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchAdult)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(removeUnderAge)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addBeforePositon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addAfterPosition))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(removeAge)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(actualizeName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(actualizeAge)
+                        .addGap(18, 18, 18)
+                        .addComponent(search)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,17 +232,45 @@ public class Menu extends javax.swing.JFrame {
                 validateIntInput(JOptionPane.showInputDialog("Diga la edad: ")));
     }//GEN-LAST:event_addFirstActionPerformed
 
-    private void searchpocitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchpocitionActionPerformed
+    private void searchpositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchpositionActionPerformed
        objLista.buscarPocisionAnteriorySiguiente();
-    }//GEN-LAST:event_searchpocitionActionPerformed
+    }//GEN-LAST:event_searchpositionActionPerformed
 
     private void searchAdultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAdultActionPerformed
        objLista.consultarAdultos();
     }//GEN-LAST:event_searchAdultActionPerformed
 
-    private void RemoveNoAdultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveNoAdultActionPerformed
+    private void removeUnderAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeUnderAgeActionPerformed
         objLista.eliminarMenores();
-    }//GEN-LAST:event_RemoveNoAdultActionPerformed
+    }//GEN-LAST:event_removeUnderAgeActionPerformed
+
+    private void removePositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePositionActionPerformed
+        objLista.eliminarPorPosicion();
+    }//GEN-LAST:event_removePositionActionPerformed
+
+    private void removeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNameActionPerformed
+        objLista.eliminarPorNombre();
+    }//GEN-LAST:event_removeNameActionPerformed
+
+    private void removeAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAgeActionPerformed
+       objLista.eliminarPorEdad();
+    }//GEN-LAST:event_removeAgeActionPerformed
+
+    private void actualizeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizeNameActionPerformed
+        objLista.actualizarNombre();
+    }//GEN-LAST:event_actualizeNameActionPerformed
+
+    private void actualizeAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizeAgeActionPerformed
+        objLista.actualizarEdad();
+    }//GEN-LAST:event_actualizeAgeActionPerformed
+
+    private void addBeforePositonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBeforePositonActionPerformed
+        objLista.insertarAntesDePosicion();
+    }//GEN-LAST:event_addBeforePositonActionPerformed
+
+    private void addAfterPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAfterPositionActionPerformed
+       objLista.insertarDespuesDePosicion();
+    }//GEN-LAST:event_addAfterPositionActionPerformed
 
   
     public static void main(String args[]) {
@@ -199,12 +326,20 @@ public class Menu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton RemoveNoAdult;
+    private javax.swing.JButton actualizeAge;
+    private javax.swing.JButton actualizeName;
+    private javax.swing.JButton addAfterPosition;
+    private javax.swing.JButton addBeforePositon;
     private javax.swing.JButton addFirst;
     private javax.swing.JButton addLast;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton removeAge;
+    private javax.swing.JButton removeName;
+    private javax.swing.JButton removePosition;
+    private javax.swing.JButton removeUnderAge;
     private javax.swing.JButton search;
     private javax.swing.JButton searchAdult;
-    private javax.swing.JButton searchpocition;
+    private javax.swing.JButton searchposition;
     private javax.swing.JLabel tittle;
     // End of variables declaration//GEN-END:variables
 }
