@@ -3,18 +3,14 @@ package com.mycompany.ejerciciolistadoble;
 import javax.swing.JOptionPane;
 
 public class EjercicioListaDoble {
-    
-    //ELIMINAR POR DATO Y POSICIÓN
-    //ACTUALIZAR UN DATO
-    //INSERTAR ANTES Y DESPUES DE UNA POSICIÓN
-    
+
     Nodo inicio;
 
     EjercicioListaDoble() {
         inicio = null;
     }
-    
-       public void insertarInicio(String name, int age) {
+
+    public void insertarInicio(String name, int age) {
         Nodo nuevo = new Nodo();
 
         nuevo.setAnterior(null);
@@ -138,12 +134,268 @@ public class EjercicioListaDoble {
         JOptionPane.showMessageDialog(null, "Todos los menores de edad han sido eliminados de la lista.");
     }
 
+    public void eliminarPorPosicion() {
+        String input = JOptionPane.showInputDialog("Diga la posición del nodo a eliminar: ");
+        int posicionBuscada = validateIntInput(input);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        if (posicionBuscada == 1) {
+            Nodo temporal = inicio;
+            inicio = inicio.getSgt();
+            if (inicio != null) {
+                inicio.setAnterior(null);
+            }
+            temporal = null;
+            JOptionPane.showMessageDialog(null, "Nodo eliminado con éxito");
+        } else {
+            Nodo temporal = inicio;
+            int posicionActual = 1;
+
+            while (temporal != null && posicionActual < posicionBuscada - 1) {
+                temporal = temporal.getSgt();
+                posicionActual++;
+            }
+
+            if (temporal != null && temporal.getSgt() != null) {
+                Nodo nodoAEliminar = temporal.getSgt();
+                temporal.setSgt(nodoAEliminar.getSgt());
+                if (nodoAEliminar.getSgt() != null) {
+                    nodoAEliminar.getSgt().setAnterior(temporal);
+                }
+                nodoAEliminar = null;
+                JOptionPane.showMessageDialog(null, "Nodo eliminado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+            }
+        }
+    }
+
+    public void insertarAntesDePosicion() {
+        String input = JOptionPane.showInputDialog("Diga la posición: ");
+        int posicionBuscada = validateIntInput(input);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        String nombre = JOptionPane.showInputDialog("Diga el nombre: ");
+        int edad = validateIntInput(JOptionPane.showInputDialog("Diga la edad: "));
+
+        if (posicionBuscada == 1) {
+            insertarInicio(nombre, edad);
+        } else {
+            Nodo temporal = inicio;
+            int posicionActual = 1;
+
+            while (temporal != null && posicionActual < posicionBuscada - 1) {
+                temporal = temporal.getSgt();
+                posicionActual++;
+            }
+
+            if (temporal != null) {
+                Nodo nuevo = new Nodo();
+                nuevo.setName(nombre);
+                nuevo.setAge(edad);
+
+                nuevo.setSgt(temporal.getSgt());
+                nuevo.setAnterior(temporal);
+                temporal.setSgt(nuevo);
+                nuevo.getSgt().setAnterior(nuevo);
+
+                if (temporal == inicio) {
+                    inicio = nuevo;
+                }
+
+                JOptionPane.showMessageDialog(null, "Nodo insertado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+            }
+        }
+    }
+
+    public void insertarDespuesDePosicion() {
+        String input = JOptionPane.showInputDialog("Diga la posición: ");
+        int posicionBuscada = validateIntInput(input);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        String nombre = JOptionPane.showInputDialog("Diga el nombre: ");
+        int edad = validateIntInput(JOptionPane.showInputDialog("Diga la edad: "));
+
+        if (posicionBuscada == 1) {
+            Nodo nuevo = new Nodo();
+            nuevo.setName(nombre);
+            nuevo.setAge(edad);
+
+            nuevo.setSgt(inicio.getSgt());
+            nuevo.setAnterior(inicio);
+            inicio.setSgt(nuevo);
+            nuevo.getSgt().setAnterior(nuevo);
+
+            if (inicio.getSgt() == inicio) {
+                inicio.setSgt(nuevo);
+                nuevo.setAnterior(inicio);
+            }
+
+            JOptionPane.showMessageDialog(null, "Nodo insertado con éxito");
+        } else {
+            Nodo temporal = inicio;
+            int posicionActual = 1;
+
+            while (temporal != null && posicionActual < posicionBuscada) {
+                temporal = temporal.getSgt();
+                posicionActual++;
+            }
+
+            if (temporal != null) {
+                Nodo nuevo = new Nodo();
+                nuevo.setName(nombre);
+                nuevo.setAge(edad);
+
+                nuevo.setSgt(temporal.getSgt());
+                nuevo.setAnterior(temporal);
+                temporal.setSgt(nuevo);
+                nuevo.getSgt().setAnterior(nuevo);
+
+                JOptionPane.showMessageDialog(null, "Nodo insertado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+            }
+        }
+    }
+
+    public void actualizarNombre() {
+        String input = JOptionPane.showInputDialog("Diga la posición del nodo a actualizar el nombre: ");
+        int posicionBuscada = validateIntInput(input);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        Nodo temporal = inicio;
+        int posicionActual = 1;
+
+        while (temporal != null && posicionActual < posicionBuscada) {
+            temporal = temporal.getSgt();
+            posicionActual++;
+        }
+
+        if (temporal != null) {
+            String nuevoNombre = JOptionPane.showInputDialog("Diga el nuevo nombre: ");
+            temporal.setName(nuevoNombre);
+            JOptionPane.showMessageDialog(null, "Nombre actualizado con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+        }
+    }
+
+    public void actualizarEdad() {
+        String input = JOptionPane.showInputDialog("Diga la posición del nodo a actualizar la edad: ");
+        int posicionBuscada = validateIntInput(input);
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        Nodo temporal = inicio;
+        int posicionActual = 1;
+
+        while (temporal != null && posicionActual < posicionBuscada) {
+            temporal = temporal.getSgt();
+            posicionActual++;
+        }
+
+        if (temporal != null) {
+            int nuevaEdad = validateIntInput(JOptionPane.showInputDialog("Diga la nueva edad: "));
+            temporal.setAge(nuevaEdad);
+            JOptionPane.showMessageDialog(null, "Edad actualizada con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+        }
+    }
+
+    public void eliminarPorNombre() {
+        String nombre = JOptionPane.showInputDialog("Diga el nombre del nodo a eliminar: ");
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        Nodo temporal = inicio;
+
+        while (temporal != null) {
+            if (temporal.getName().equalsIgnoreCase(nombre)) {
+                if (temporal == inicio) {
+                    inicio = temporal.getSgt();
+                    if (inicio != null) {
+                        inicio.setAnterior(null);
+                    }
+                } else {
+                    temporal.getAnterior().setSgt(temporal.getSgt());
+                    if (temporal.getSgt() != null) {
+                        temporal.getSgt().setAnterior(temporal.getAnterior());
+                    }
+                }
+                temporal = null;
+                JOptionPane.showMessageDialog(null, "Nodo eliminado con éxito");
+                return;
+            }
+            temporal = temporal.getSgt();
+        }
+
+        JOptionPane.showMessageDialog(null, "No hay ningún nodo con el nombre " + nombre);
+    }
+
+    public void eliminarPorEdad() {
+        int edad = validateIntInput(JOptionPane.showInputDialog("Diga la edad del nodo a eliminar: "));
+
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+
+        Nodo temporal = inicio;
+
+        while (temporal != null) {
+            if (temporal.getAge() == edad) {
+                if (temporal == inicio) {
+                    inicio = temporal.getSgt();
+                    if (inicio != null) {
+                        inicio.setAnterior(null);
+                    }
+                } else {
+                    temporal.getAnterior().setSgt(temporal.getSgt());
+                    if (temporal.getSgt() != null) {
+                        temporal.getSgt().setAnterior(temporal.getAnterior());
+                    }
+                }
+                temporal = null;
+                JOptionPane.showMessageDialog(null, "Nodo eliminado con éxito");
+                return;
+            }
+            temporal = temporal.getSgt();
+        }
+
+        JOptionPane.showMessageDialog(null, "No hay ningún nodo con la edad " + edad);
+    }
+
     public void imprimir() {
         Nodo temporal = inicio;
 
         if (inicio == null) {
             JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
-        } else {       
+        } else {
             while (temporal != null) {
                 JOptionPane.showMessageDialog(null, "Nombre: " + temporal.getName() + "\n Edad: " + temporal.getAge());
                 temporal = temporal.getSgt();
