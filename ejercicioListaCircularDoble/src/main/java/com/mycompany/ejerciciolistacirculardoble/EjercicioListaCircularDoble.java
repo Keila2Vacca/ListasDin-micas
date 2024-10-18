@@ -256,13 +256,65 @@ public class EjercicioListaCircularDoble {
     }
 
     public void insertarAntesDePosicion() {
-        //falta
-        JOptionPane.showMessageDialog(null, "FALTAAA");
+        String input = JOptionPane.showInputDialog("Diga la posición: ");
+        int posicionBuscada = validateIntInput(input);
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+        String nombre = JOptionPane.showInputDialog("Diga el nombre: ");
+        int edad = validateIntInput(JOptionPane.showInputDialog("Diga la edad: "));
+        if (posicionBuscada == 1) {
+            insertarInicio(nombre, edad);
+        } else {
+            Nodo temporal = inicio;
+            int posicionActual = 1;
+            while (temporal.getSgt() != inicio && posicionActual < posicionBuscada - 1) {
+                temporal = temporal.getSgt();
+                posicionActual++;
+            }
+            if (temporal.getSgt() != inicio || (temporal == inicio && posicionActual == posicionBuscada - 1)) {
+                Nodo nuevo = new Nodo();
+                nuevo.setName(nombre);
+                nuevo.setAge(edad);
+                nuevo.setSgt(temporal.getSgt());
+                nuevo.setAnterior(temporal);
+                temporal.setSgt(nuevo);
+                nuevo.getSgt().setAnterior(nuevo);
+                JOptionPane.showMessageDialog(null, "Nodo insertado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+            }
+        }
     }
 
     public void insertarDespuesDePosicion() {
-//falta
-        JOptionPane.showMessageDialog(null, "FALTAAA");
+        String input = JOptionPane.showInputDialog("Diga la posición: ");
+        int posicionBuscada = validateIntInput(input);
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "No hay nadie en la lista");
+            return;
+        }
+        String nombre = JOptionPane.showInputDialog("Diga el nombre: ");
+        int edad = validateIntInput(JOptionPane.showInputDialog("Diga la edad: "));
+        Nodo temporal = inicio;
+        int posicionActual = 1;
+        while (temporal.getSgt() != inicio && posicionActual < posicionBuscada) {
+            temporal = temporal.getSgt();
+            posicionActual++;
+        }
+        if (temporal.getSgt() != inicio || (temporal == inicio && posicionActual == posicionBuscada)) {
+            Nodo nuevo = new Nodo();
+            nuevo.setName(nombre);
+            nuevo.setAge(edad);
+            nuevo.setSgt(temporal.getSgt());
+            nuevo.setAnterior(temporal);
+            temporal.setSgt(nuevo);
+            nuevo.getSgt().setAnterior(nuevo);
+            JOptionPane.showMessageDialog(null, "Nodo insertado con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningún nodo en la posición " + posicionBuscada);
+        }
     }
 
     public void actualizarNombre() {
